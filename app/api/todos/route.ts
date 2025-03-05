@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest, res: NextResponse) {
     const todos = await prisma.todo.findMany()
 
-    return NextResponse.json(todos)
+    return NextResponse.json(todos, { status: 200 })
 }
 
 export async function POST(req: NextRequest, res: NextResponse) {
@@ -18,5 +18,5 @@ export async function POST(req: NextRequest, res: NextResponse) {
         }
     })
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true }, { status: 201 })
 }
